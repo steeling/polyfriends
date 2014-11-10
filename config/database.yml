@@ -13,3 +13,11 @@ test:
   database: polyfriends_test
   pool: 5
   username: polyfriends
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: polyfriends_production
+  pool: 5
+  username: polyfriends
