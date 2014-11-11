@@ -39,7 +39,6 @@ end
 #my gems
 gem 'pg'
 gem 'pundit'
-gem 'warden'
 gem 'devise'
 gem 'haml'
 gem 'grape'
