@@ -1,4 +1,19 @@
 Polyfriends::Application.routes.draw do
+  Rails.application.routes.draw do
+    devise_for :users, 
+    controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  end
+
+  devise_scope :user do
+    get "sign_in", to: "devise/sessions#new"
+    get "sign_up", to: "devise/registrations#new"
+  end
+
+  root 'users#new'
+
+
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
