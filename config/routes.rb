@@ -1,15 +1,38 @@
 Polyfriends::Application.routes.draw do
+
+  resources :ratings
+
+  resources :reviews
+
+  resources :sports
+
+  resources :schools
+
+  resources :coaches do
+    collection do
+      get :search
+    end
+  end
+
   Rails.application.routes.draw do
-    devise_for :users, 
+  resources :reviews
+
+  resources :sports
+
+  resources :schools
+
+  resources :coaches
+
+  devise_for :users, 
     controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   end
 
   devise_scope :user do
-    get "sign_in", to: "devise/sessions#new"
-    get "sign_up", to: "devise/registrations#new"
+    get "sign_in", to: "users/sessions#new"
+    get "sign_up", to: "users/registrations#new"
   end
 
-  root 'users#new'
+  root 'coaches#new'
 
 
   resources :users
