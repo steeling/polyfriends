@@ -9,6 +9,7 @@ before_filter :configure_sign_in_params, only: [:create]
 
   # POST /resource/sign_in
   def create
+    byebug
     super
   end
 
@@ -21,6 +22,6 @@ before_filter :configure_sign_in_params, only: [:create]
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_in_params
-    devise_parameter_sanitizer.for(:sign_in) << :attribute
+    devise_parameter_sanitizer.for(:login) { |u| u.permit(:email, :password, :password_confirmation, :grade_level, :first_name, :last_name) }
   end
 end

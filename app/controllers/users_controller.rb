@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
   # GET /users/1/edit
   def edit
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    byebug
     @user = User.new(user_params)
 
     respond_to do |format|

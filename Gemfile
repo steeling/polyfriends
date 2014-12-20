@@ -45,6 +45,7 @@ gem 'grape'
 gem 'binding_of_caller'
 gem "font-awesome-rails"
 gem "hashie_rails"
+gem "warden"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

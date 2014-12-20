@@ -42,12 +42,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def valid_email
     #only checks calpoly
-    params[:email].match(/@calpoly\.edu$/).nil?
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :grade_level, :first_name, :last_name) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
   end
 
   # You can put the params you want to permit in the empty array.
