@@ -9,7 +9,6 @@ before_filter :configure_sign_in_params, only: [:create]
 
   # POST /resource/sign_in
   def create
-    byebug
     super
   end
 

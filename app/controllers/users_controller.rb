@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    byebug
     @user = User.new(user_params)
-
+    @user.camelize_name
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -37,6 +36,12 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        if params[:user][:avatar]
+          #uploader = AvatarUploader.new
+          #uploader.store!(params[:user][:avatar].tempfile.path)
+          @user.avatar = params[:user][:avatar]
+          @user.save!
+        end
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

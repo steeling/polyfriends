@@ -1,0 +1,31 @@
+= form_for(@coach) do |f|
+  - if @coach.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@coach.errors.count, "error")
+        prohibited this coach from being saved:
+      %ul
+        - @coach.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+  .field
+    = f.label :img_ref
+    %br/
+    = f.text_field :img_ref
+  .field
+    = f.label :started
+    %br/
+    = f.date_select :started
+  .field
+    = f.label :gender
+    %br/
+    = f.text_field :gender
+  .actions
+    = f.submit

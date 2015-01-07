@@ -11,6 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    params[:user][:first_name] = params[:user][:first_name].camelize
+    params[:user][:last_name] = params[:user][:last_name].camelize
     super
   end
 
@@ -46,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :first_name, :last_name) }
   end
 
   # You can put the params you want to permit in the empty array.

@@ -1,0 +1,40 @@
+:javascript
+  $(document).ready(function(){
+   $('.stars').raty({
+      readOnly: true,
+      hints   : [null, null, null, null, null],
+      starOn  : 'star-on-big.png',
+      starOff : 'star-off-big.png',
+      starHalf: 'star-half-big.png',
+      score   : function() {
+        return $(this).attr('data-score');
+      }
+   });
+  });
+
+.row
+  .col-xs-12.col-sm-8.col-md-6.col-sm-offset-1
+    %span
+      %h3
+        =@coach.full_name
+        .stars{:"data-score" => @coach.rating, style:"display:inline; margin-left:10px"}
+
+    =image_tag @coach.get_img, width: "200px", height: "200px"
+
+    /%p#notice=notice
+    %p
+      %strong Started:
+      =@coach.started
+
+    %p
+      %strong Gender:
+      =@coach.gender
+
+    =link_to 'Edit', edit_coach_path(@coach)
+    |
+    = link_to 'Back', coaches_path
+  .col-xs-12.col-sm-8.col-md-4.col-sm-offset-1
+    =link_to 'Write a Review', create_review_coach_path(@coach), class: "btn btn-primary btn-lg"
+
+
+

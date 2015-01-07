@@ -35,6 +35,7 @@ end
 group :development do
   gem "better_errors"
   gem "byebug"
+  gem "erb2haml"
 end
 #my gems
 gem 'pg'
@@ -46,6 +47,8 @@ gem 'binding_of_caller'
 gem "font-awesome-rails"
 gem "hashie_rails"
 gem "warden"
+gem "bower-rails"
+gem "carrierwave"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,0 +1,48 @@
+!!!
+%html
+   %head
+      %title= "Coacher"
+      =javascript_include_tag "jquery-2.1.1.min.js", "data-turbolinks-track" => true
+      =javascript_include_tag "raty.min.js", "data-turbolinks-track" => true
+      =javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => true
+      =javascript_include_tag "application.js", "data-turbolinks-track" => true
+
+
+      =stylesheet_link_tag "application.css", media: "all", "data-turbolinks-track" => true
+      =stylesheet_link_tag "bootstrap.min.css", media: "all", "data-turbolinks-track" => true
+      =stylesheet_link_tag "bootstrap-theme.min.css", media: "all", "data-turbolinks-track" => true
+
+      %csrf_meta_tags
+   %body
+      .container-fluid
+         .row
+            .col-xs-8.col-sm-8.col-md-8.col-xs-offset-1
+               %h1 
+                  %a=link_to 'Coacher', root_path
+            .col-xs-3.col-sm-3.col-md-3
+               .pull-right{style: "padding-right:20px"}
+                  -if !signed_in?
+                     %a.pull-right=link_to 'Sign In', sign_in_path
+                  -else
+                     %a.pull-right=link_to 'Sign Out', sign_out_path
+         .row
+            %nav.navbar.navbar-default.navbar-static-top{role: 'navigation'}
+               .container-fluid
+               .col-xs-4.col-sm-4.col-md-4
+               .col-xs-4.col-sm-4.col-md-4
+
+                  .navbar-form.navbar-nav{role: :search}
+                     =form_for :Coach, url: :search_coaches, method: :get do |f|
+                        %i.fa.fa-search
+                        =f.text_field :name, class: "form-control input-lg coach-search", placeholder: "Search coaches"
+               .col-xs-4.col-sm-4.col-md-4
+
+                  .navbar-form.navbar-right
+                     %ul.nav.navbar-nav
+
+                        -if signed_in?
+                           %li=link_to 'My Profile', user_path(current_user), class: "btn btn-group-lg"
+                           %li=link_to 'Add a Coach', new_coach_path, class: "btn btn-group-lg"
+                        -else
+                           %li=link_to 'Sign Up', sign_up_path, class: "btn btn-group-lg"
+         =yield

@@ -1,0 +1,32 @@
+:javascript
+  $(document).ready(function(){
+
+   $('.star-input').raty({
+      readOnly: false,
+      hints: [null, null, null, null, null],
+      half: true,
+      click: function(score, evt) {
+        $('.star-form-helper').val(score);
+      }
+   });
+  });
+
+.row
+  .col-xs-12.col-sm-8.col-md-6.col-sm-offset-1
+    %span
+      %h3
+        =@coach.full_name
+    -if signed_in?
+      =form_for Review.new do |f|
+        .form-group
+          =f.label :rating
+          .star-input.col-sm-offset-1{style:"display:inline"}
+        .form-group
+          =f.text_area :text, class: "form-control", rows: "4"
+        
+        =f.hidden_field :rating, class: "star-form-helper"
+        =f.hidden_field :user_id, value: current_user.id
+        =f.hidden_field :coach_id, value: @coach.id
+
+
+        =f.submit "Create Review", class: "btn btn-primary btn-block btn-lg"

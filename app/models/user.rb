@@ -7,4 +7,17 @@ class User < ActiveRecord::Base
 	has_many :reviews
 	
 	validates :email, uniqueness: true
+
+  mount_uploader :avatar, AvatarUploader
+
+
+  def get_img
+    self.avatar
+  end
+
+  def camelize_name
+    self.first_name = first_name.camelize
+    self.last_name = last_name.camelize
+    byebug
+  end
 end
