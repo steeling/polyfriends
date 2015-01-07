@@ -30,9 +30,13 @@
       %strong Gender:
       =@coach.gender
 
+    %p
+      %strong School:
+      =link_to @coach.school.name, school_path(@coach.school)
+
     =link_to 'Edit', edit_coach_path(@coach)
     |
-    = link_to 'Back', coaches_path
+    =link_to 'Back', coaches_path
   .col-xs-12.col-sm-8.col-md-4.col-sm-offset-1
     =link_to 'Write a Review', create_review_coach_path(@coach), class: "btn btn-primary btn-lg"
 

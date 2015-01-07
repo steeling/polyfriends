@@ -11,8 +11,20 @@
  *= require_self
  *= require_tree .
  *= require font-awesome
+ *= require chosen
+ *= require bootstrap-datepicker3
  */
 
+ a.dropdown-toggle {
+    color: #111 !important;
+ }
+ ul.nav li.dropdown:hover > a.dropdown-toggle{
+    opacity: 1.0;
+ }
+
+ ul.nav li.dropdown:hover > ul.dropdown-menu {
+     display: block;    
+ }
  @media ( min-width: 768px ) { 
      .navbar > .container {
          text-align: center;

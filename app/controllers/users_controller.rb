@@ -37,8 +37,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         if params[:user][:avatar]
-          #uploader = AvatarUploader.new
-          #uploader.store!(params[:user][:avatar].tempfile.path)
           @user.avatar = params[:user][:avatar]
           @user.save!
         end

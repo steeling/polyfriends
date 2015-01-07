@@ -49,6 +49,8 @@ gem "hashie_rails"
 gem "warden"
 gem "bower-rails"
 gem "carrierwave"
+gem 'chosen-rails'
+gem 'bootstrap-datepicker-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
