@@ -1,13 +1,18 @@
-%p#notice= notice
-%p
-  %strong City:
-  = @school.city
-%p
-  %strong State:
-  = @school.state
-%p
-  %strong Name:
-  = @school.name
+.row
+  .col-xs-11.col-sm-11.col-md-11.col-sm-offset-1
+    %h1=@school.name
+    .stars-big{:"data-score" => @school.rating, style:"display:inline;"}
+
+.row
+  .col-xs-5.col-sm-5.col-md-5.col-sm-offset-1
+    %h5=@school.address
+    %h5=@school.city + ", " + @school.state
+    .row
+      %iframe{width: "400", height: "300", frameborder: "0", style: "border:0", src:"https://www.google.com/maps/embed/v1/place?key=AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4&q=#{@school.name}+#{@school.address}+#{@school.city}+#{@school.state}"}
+
 = link_to 'Edit', edit_school_path(@school)
 |
 \#{link_to 'Back', schools_path}
+
+
+/googleapikey/AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4

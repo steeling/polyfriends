@@ -1,21 +1,18 @@
-%h1 Listing schools
-%table
-  %thead
-    %tr
-      %th City
-      %th State
-      %th Name
-      %th
-      %th
-      %th
-  %tbody
-    - @schools.each do |school|
-      %tr
-        %td= school.city
-        %td= school.state
-        %td= school.name
-        %td= link_to 'Show', school
-        %td= link_to 'Edit', edit_school_path(school)
-        %td= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New School', new_school_path
+.row
+  .col-xs-4.col-sm-4.col-md-4.col-sm-offset-1
+  .col-xs-4.col-sm-4.col-md-4
+    %h1 Schools
+  .col-xs-4.col-sm-4.col-md-4
+
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-sm-offset-1
+    %table.table.table-hover.table-condensed
+      -@schools.each do |s|
+        %tr
+          %td
+            .stars{:"data-score" => s.rating, style:"display:inline; margin-left:10px"}
+          %td=link_to s.name, school_path(s)
+.row
+  .col-xs-4.col-sm-4.col-md-4.col-sm-offset-1
+  .col-xs-4.col-sm-4.col-md-4
+    =will_paginate @schools, container: false

@@ -17,3 +17,32 @@
 //= require bootstrap-datepicker
 //= require_tree .
 
+$(document).ready(function(){
+  $('.stars-big').raty({
+    readOnly: true,
+    hints   : [null, null, null, null, null],
+    starOn  : 'star-on-big.png',
+    starOff : 'star-off-big.png',
+    starHalf: 'star-half-big.png',
+    score   : function() {
+      return $(this).attr('data-score');
+    }
+  });
+
+  $('.stars').raty({
+    readOnly: true,
+    hints   : [null, null, null, null, null],
+    score   : function() {
+      return $(this).attr('data-score');
+    }
+  });
+
+  $('.star-input').raty({
+    readOnly: false,
+    hints: [null, null, null, null, null],
+    half: true,
+    click: function(score, evt) {
+      $('.star-form-helper').val(score);
+    }
+  });
+});

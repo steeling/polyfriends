@@ -51,6 +51,7 @@ gem "bower-rails"
 gem "carrierwave"
 gem 'chosen-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'will_paginate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

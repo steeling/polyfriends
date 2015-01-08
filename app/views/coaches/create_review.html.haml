@@ -1,16 +1,3 @@
-:javascript
-  $(document).ready(function(){
-
-   $('.star-input').raty({
-      readOnly: false,
-      hints: [null, null, null, null, null],
-      half: true,
-      click: function(score, evt) {
-        $('.star-form-helper').val(score);
-      }
-   });
-  });
-
 .row
   .col-xs-12.col-sm-8.col-md-6.col-sm-offset-1
     %span
