@@ -38,12 +38,19 @@
                            %li=link_to "Sports", sports_path
 
                .col-xs-4.col-sm-4.col-md-4
-
                   .navbar-form.navbar-nav{role: :search}
                      =form_for :Coach, url: :search_coaches, method: :get do |f|
                         %i.fa.fa-search
                         =f.text_field :name, class: "form-control input-lg coach-search", placeholder: "Search coaches"
                .col-xs-4.col-sm-4.col-md-4
+                  %ul.nav.navbar-nav
+                     %li.dropdown{role: :presentation}
+                        %a.dropdown-toggle.btn.btn-group-lg.disabled{href: "#", role: :button, :"data-toggle" => "dropdown"}
+                           = if @selected_sport.nil? then "Filter by Sport" else @selected_sport.name end
+                        %ul.dropdown-menu{role: :menu}
+                           %li=button_to "All", clear_selected_sports_path
+                           -@sports.each do |s|
+                              %li=button_to s.name, set_selected_sport_path(s)
 
                   .navbar-form.navbar-right
                      %ul.nav.navbar-nav

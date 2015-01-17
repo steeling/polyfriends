@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   resources :reviews
 
-  resources :sports
+  resources :sports do
+    member do
+      post :set_selected
+    end
+    collection do
+      post :clear_selected
+    end
+  end
 
   resources :schools
 

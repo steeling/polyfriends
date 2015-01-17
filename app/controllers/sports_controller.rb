@@ -36,12 +36,22 @@ class SportsController < ApplicationController
     respond_with(@sport)
   end
 
+  def set_selected
+    session[:selected_sport] = Sport.find(params[:id])
+    redirect_to :back
+  end
+
+  def clear_selected
+    session[:selected_sport] = nil
+    redirect_to :back
+  end
+
   private
     def set_sport
       @sport = Sport.find(params[:id])
     end
 
     def sport_params
-      params.require(:sport).permit(:name)
+      params.require(:sport).permit(:name, :id)
     end
 end

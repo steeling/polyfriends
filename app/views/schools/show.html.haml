@@ -8,7 +8,7 @@
     %h5=@school.address
     %h5=@school.city + ", " + @school.state
     .row
-      %iframe{width: "400", height: "300", frameborder: "0", style: "border:0", src:"https://www.google.com/maps/embed/v1/place?key=AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4&q=#{@school.name}+#{@school.address}+#{@school.city}+#{@school.state}"}
+      %iframe{width: "400", height: "300", frameborder: "0", style: "border:0", src:"https://www.google.com/maps/embed/v1/place?key=AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4&q=#{CGI.escape(@school.name)}+#{CGI.escape(@school.address)}+#{CGI.escape(@school.city)}+#{CGI.escape(@school.state)}".html_safe}
 
 = link_to 'Edit', edit_school_path(@school)
 |
