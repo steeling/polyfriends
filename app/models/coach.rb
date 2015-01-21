@@ -4,7 +4,7 @@ class Coach < ActiveRecord::Base
 
 	has_many :reviews
 
-  scope :recently_reviewed, -> { where.not(last_review: nil).order(:last_review).limit(20)}
+  scope :recently_reviewed, -> { where.not(last_review: nil).order('last_review DESC').limit(20)}
 
   mount_uploader :avatar, AvatarUploader
 
@@ -18,8 +18,8 @@ class Coach < ActiveRecord::Base
     self.avatar
 	end
 
-  def new_review
-    self.last_review = Time.current
+  def new_review(time)
+    self.last_review = time
     save
   end
 

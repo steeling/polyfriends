@@ -11,7 +11,6 @@
         .form-group
           =f.text_area :text, class: "form-control", rows: "4"
         
-        =f.hidden_field :rating, class: "star-form-helper"
         =f.hidden_field :user_id, value: current_user.id
         =f.hidden_field :coach_id, value: @coach.id
 

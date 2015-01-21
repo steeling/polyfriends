@@ -45,9 +45,6 @@
       readOnly: false,
       hints: [null, null, null, null, null],
       half: true,
-      path: '/assets',
-      click: function(score, evt) {
-        $('.star-form-helper').val(score);
-      }
+      path: '/assets'
     });
   });

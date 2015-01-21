@@ -4,7 +4,11 @@ class CoachesController < ApplicationController
   respond_to :html
 
   def index
-    @coaches = Coach.recently_reviewed
+    if @selected_sport.nil?
+      @coaches = Coach.recently_reviewed
+    else
+      @coaches = Coach.recently_reviewed.where(sport: @selected_sport)
+    end
     respond_with(@coaches)
   end
 
@@ -42,7 +46,6 @@ class CoachesController < ApplicationController
   end
 
   def create_review
-
   end
 
   private

@@ -9,7 +9,8 @@ class SchoolsController < ApplicationController
   end
 
   def show
-    respond_with(@school)
+    @coaches = @school.get_coaches(@selected_sport)
+    respond_with(@school, @coaches)
   end
 
   def new

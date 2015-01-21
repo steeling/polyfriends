@@ -10,7 +10,8 @@
       -@schools.each do |s|
         %tr
           %td
-            .stars{:"data-score" => s.rating, style:"display:inline; margin-left:10px"}
+            .stars{:"data-score" => s.rating(@selected_sport), style:"display:inline; margin-left:10px"}
+            ="From #{s.num_reviews} reviews"
           %td=link_to s.name, school_path(s)
 .row
   .col-xs-4.col-sm-4.col-md-4.col-sm-offset-1

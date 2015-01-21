@@ -27,7 +27,7 @@
          .row
             %nav.navbar.navbar-default.navbar-static-top{role: 'navigation'}
                .container-fluid
-               .col-xs-4.col-sm-4.col-md-4
+               .col-xs-3.col-sm-3.col-md-3
                   %ul.nav.navbar-nav
                      %li.dropdown{role: :presentation}
                         %a.dropdown-toggle.btn.btn-group-lg.disabled{href: "#", role: :button, :"data-toggle" => "dropdown"}
@@ -37,24 +37,20 @@
                            %li=link_to "Schools", schools_path
                            %li=link_to "Sports", sports_path
 
-               .col-xs-4.col-sm-4.col-md-4
-                  .navbar-form.navbar-nav{role: :search}
-                     =form_for :Coach, url: :search_coaches, method: :get do |f|
+               .col-xs-4.col-sm-4.col-md-4.col-lg-4
+                  .navbar-form.navbar-nav{role: :search, style:"width:100%"}
+                     =form_for :Coach, url: :search_coaches, html: {style: "width:100%"}, method: :get do |f|
                         %i.fa.fa-search
-                        =f.text_field :name, class: "form-control input-lg coach-search", placeholder: "Search coaches"
-               .col-xs-4.col-sm-4.col-md-4
+                        =f.text_field :name, class: "form-control input-lg coach-search", style: "width:90%", placeholder: "Search coaches"
+               .col-xs-5.col-sm-5.col-md-5
                   %ul.nav.navbar-nav
                      %li.dropdown{role: :presentation}
-                        %a.dropdown-toggle.btn.btn-group-lg.disabled{href: "#", role: :button, :"data-toggle" => "dropdown"}
+                        %a.dropdown-toggle.dropdown.btn.btn-group-lg.disabled{href: "#", role: :button, :"data-toggle" => "dropdown"}
                            = if @selected_sport.nil? then "Filter by Sport" else @selected_sport.name end
                         %ul.dropdown-menu{role: :menu}
-                           %li=button_to "All", clear_selected_sports_path
+                           %li=link_to "All", clear_selected_sports_path( authenticity_token: form_authenticity_token), method: :post
                            -@sports.each do |s|
-                              %li=button_to s.name, set_selected_sport_path(s)
-
-                  .navbar-form.navbar-right
-                     %ul.nav.navbar-nav
-
+                              %li=link_to s.name, set_selected_sport_path(s,  authenticity_token: form_authenticity_token), method: :post
                         -if signed_in?
                            %li=link_to 'My Profile', user_path(current_user), class: "btn btn-group-lg"
                            %li=link_to 'Add a Coach', new_coach_path, class: "btn btn-group-lg"

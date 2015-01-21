@@ -21,15 +21,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    params[:rating] = params[:score]
+    @review = Review.new(review_params.merge({rating: params[:score]}))
     @review.save
 
-    Coach.find(review_params[:coach_id]).new_review
+    Coach.find(review_params[:coach_id]).new_review(@review.updated_at)
     respond_with(@review)
   end
 
   def update
-    @review.update(review_params)
+    @review.update(review_params.merge({rating: params[:score]}))
     respond_with(@review)
   end
 
@@ -44,6 +45,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:text, :coach_id, :user_id, :rating)
+      params.require(:review).permit(:text, :coach_id, :user_id)
     end
 end
