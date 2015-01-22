@@ -13,11 +13,11 @@
           %h4.list-group-item-heading
             =image_tag coach.get_img, width: "32[x", height: "32px"
             =link_to coach.full_name, coach_path(coach)
-            .stars-big{:"data-score" => review.coach.rating, style:"display:inline; margin-left:10px"}
+            .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
             %small="#{coach.num_ratings} reviews"
           %br
           %span.list-group-item-text
-            -t = coach.reviews.last.text
+            -t = review.text
             =truncate(t, length: 500)
             -if t.length > 500
               =link_to "See more", coach_review_path(coach, coach.reviews.last)
