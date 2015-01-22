@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :reviews
 
-  resources :sports do
+  resources :sports, only: [:index, :show] do
     member do
       post :set_selected
     end
@@ -10,15 +9,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :schools
+  resources :schools, only: [:index, :show]
 
   resources :coaches do
+    resources :reviews, except: [:index]
+
     collection do
       get :search
-    end
-
-    member do
-      get :create_review
     end
   end
 
@@ -34,7 +31,7 @@ Rails.application.routes.draw do
   root 'coaches#index'
 
 
-  resources :users
+  resources :users, except: [:index]
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -10,22 +10,25 @@
     %h5=@school.city + ", " + @school.state
     .row
       %iframe{width: "400", height: "300", frameborder: "0", style: "border:0", src:"https://www.google.com/maps/embed/v1/place?key=AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4&q=#{CGI.escape(@school.name)}+#{CGI.escape(@school.address)}+#{CGI.escape(@school.city)}+#{CGI.escape(@school.state)}".html_safe}
+
 .row
-  .col-xs-12.col-sm-8.col-md-8.col-sm-offset-1
-    -@coaches.each do |coach|
-      %h4
-        =image_tag coach.get_img, width: "32[x", height: "32px"
-        =link_to coach.full_name, coach_path(coach)
-        .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
+  .col-xs-12.col-sm-8.col-md-6.col-sm-offset-1
+    %ul.list-group
+      -@coaches.each do |coach|
+        %li.list-group-item
+          %h4=coach.sport.name
+          %h5.list-group-item-heading
+            =image_tag coach.get_img, width: "32[x", height: "32px"
+            =link_to coach.full_name, coach_path(coach)
+            .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
+            %small="#{coach.num_ratings} reviews"
+          %br
+          %span.list-group-item-text
+            -t = coach.reviews.last.text
+            =truncate(t, length: 500)
+            -if t.length > 500
+              =link_to "See more", coach_review_path(coach, coach.reviews.last)
 
-      %br
-      %p
-        .review-stars{:"data-score" => coach.reviews.last.rating, style:"display:inline; margin-right:10px"}
-        =coach.reviews.last.text
-
-      %hr
-
-= link_to 'Edit', edit_school_path(@school)
 |
 \#{link_to 'Back', schools_path}
 

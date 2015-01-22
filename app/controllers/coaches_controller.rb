@@ -46,6 +46,8 @@ class CoachesController < ApplicationController
   end
 
   def create_review
+    @review = Review.new
+    respond_with(@coach, @review)
   end
 
   private

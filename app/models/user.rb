@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
   def camelize_name
     self.first_name = first_name.camelize
     self.last_name = last_name.camelize
-    byebug
   end
+
+  def full_name
+    first_name.camelize + " " + last_name.camelize
+  end
+
+  # def recent_reviews
+  #   self.reviews.order('updated_at DESC').limit(10)
 end

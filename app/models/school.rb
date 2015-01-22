@@ -17,7 +17,7 @@ class School < ActiveRecord::Base
 
   def num_reviews
     coaches = get_coaches
-    coaches.map(&:rating).count
+    coaches.map(&:reviews).flatten.count
   end
 
   def get_coaches(selected_sport=nil)

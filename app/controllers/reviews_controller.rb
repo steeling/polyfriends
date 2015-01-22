@@ -1,16 +1,17 @@
-class ReviewsController < ApplicationController
+class ReviewsController < CoachesController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_coach
 
   respond_to :html
 
-  def index
-    @reviews = Review.all
-    respond_with(@reviews)
-  end
+  # def index
+  #   @reviews = Review.all
+  #   respond_with(@reviews)
+  # end
 
-  def show
-    respond_with(@review)
-  end
+  # def show
+  #   respond_with(@review)
+  # end
 
   def new
     @review = Review.new
@@ -26,22 +27,26 @@ class ReviewsController < ApplicationController
     @review.save
 
     Coach.find(review_params[:coach_id]).new_review(@review.updated_at)
-    respond_with(@review)
+    respond_with(@coach)
   end
 
   def update
     @review.update(review_params.merge({rating: params[:score]}))
-    respond_with(@review)
+    respond_with(@coach)
   end
 
   def destroy
     @review.destroy
-    respond_with(@review)
+    respond_with(@coach)
   end
 
   private
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_coach
+      @coach = Coach.find(params[:coach_id])
     end
 
     def review_params
