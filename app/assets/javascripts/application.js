@@ -45,6 +45,9 @@
       readOnly: false,
       hints: [null, null, null, null, null],
       half: true,
-      path: '/assets'
+      path: '/assets',
+      score   : function() {
+        return $(this).attr('data-score');
+      }
     });
   });

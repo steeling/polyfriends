@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index]
 
     collection do
+      get :recents
       get :search
     end
   end

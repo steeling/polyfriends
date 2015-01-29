@@ -15,7 +15,7 @@
       -if signed_in?
         .form-group
           =f.label :rating
-          .star-input.col-sm-offset-1{style:"display:inline"}
+          .star-input.col-sm-offset-1{style:"display:inline", :"data-score" => @review.rating}
         .form-group
           =f.text_area :text, class: "form-control", rows: "4"
         

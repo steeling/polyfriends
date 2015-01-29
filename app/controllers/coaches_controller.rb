@@ -4,6 +4,10 @@ class CoachesController < ApplicationController
   respond_to :html
 
   def index
+    @coaches = Coach.all
+  end
+
+  def recents
     if @selected_sport.nil?
       @coaches = Coach.recently_reviewed
     else

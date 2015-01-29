@@ -31,7 +31,7 @@
       .row
         .col-xs-6.col-sm-6.col-md-6
           .form-group
-            = f.text_field :started, class: "datepicker form-control input-lg", placeholder: "Start Date"
+            = f.text_field :title, class: "form-control input-lg", placeholder: "Title"
         .col-xs-6.col-sm-6.col-md-6
           .form-group
             = f.select :gender, [["Male", "M"], ["Female", "F"]], {prompt: "Select gender"}, {class: "form-control input-lg"}
@@ -46,4 +46,7 @@
 
       .actions
         = f.submit "Create Coach", class: "btn btn-primary btn-block btn-lg"
-
+        / .row
+        /         .col-xs-6.col-sm-6.col-md-6
+        /           .form-group
+        /             = f.text_field :started, class: "datepicker form-control input-lg", placeholder: "Start Date"

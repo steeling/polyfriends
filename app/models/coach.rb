@@ -4,6 +4,8 @@ class Coach < ActiveRecord::Base
 
 	has_many :reviews
 
+  default_scope {order(:last_name)}
+
   scope :recently_reviewed, -> { where.not(last_review: nil).order('last_review DESC').limit(20)}
 
   mount_uploader :avatar, AvatarUploader
@@ -12,6 +14,7 @@ class Coach < ActiveRecord::Base
   validates :sport_id, presence: true
   validates :first_name, presence: true, allow_blank: false
   validates :last_name, presence: true, allow_blank: false
+  validates :title, presence: true, allow_blank: false
 
 
 	def get_img

@@ -2,10 +2,11 @@
   .col-xs-6.col-sm-6.col-md-6.col-xs-offset-1
 
     %h3 
-      All Coaches
+      Recently Reviewed Coaches
       %small="|"
-      %small=link_to "Recently Reviewed Coaches", recents_coaches_path
+      %small=link_to "All Coaches", coaches_path
     %hr
+
     %ul.list-group
       -@coaches.each do |coach|
         %li.list-unstyled
@@ -16,4 +17,12 @@
             %small="#{coach.num_ratings} reviews"
           = coach.sport.name + " " + coach.title + " at "
           %strong= link_to(coach.school.name, school_path(coach.school))
+          %br
+          %br
+          .col-sm-offset-1
+            %span.list-group-item-text
+              -t = coach.reviews.last.text
+              =truncate(t, length: 500)
+              -if t.length > 500
+                =link_to "See more", coach_review_path(coach, coach.reviews.last)
         %hr

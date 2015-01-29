@@ -15,6 +15,10 @@
  *= require bootstrap-datepicker3
  */
 
+.selected-sport {
+    color: #B0171F;
+}
+
  a.dropdown-toggle {
     color: #111 !important;
  }
