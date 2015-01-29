@@ -4,7 +4,12 @@ class CoachesController < ApplicationController
   respond_to :html
 
   def index
-    @coaches = Coach.all
+    if @selected_sport.nil?
+      @coaches = Coach.all
+    else
+      @coaches = Coach.all.where(sport: @selected_sport)
+    end
+    respond_with(@coaches)
   end
 
   def recents
@@ -60,6 +65,6 @@ class CoachesController < ApplicationController
     end
 
     def coach_params
-      params.require(:coach).permit(:first_name, :last_name, :img_ref, :started, :gender, :school_id, :sport_id)
+      params.require(:coach).permit(:first_name, :last_name, :img_ref, :started, :gender, :school_id, :title, :sport_id)
     end
 end
