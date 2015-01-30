@@ -25,11 +25,12 @@
             .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
             %small="#{coach.num_ratings} reviews"
           %br
-          %span.list-group-item-text
-            -t = coach.reviews.last.text
-            =truncate(t, length: 500)
-            -if t.length > 500
-              =link_to "See more", coach_review_path(coach, coach.reviews.last)
+          -if coach.reviews.count > 0
+            %span.list-group-item-text
+              -t = coach.reviews.last.text
+              =truncate(t, length: 500)
+              -if t.length > 500
+                =link_to "See more", coach_review_path(coach, coach.reviews.last)
 
 |
 \#{link_to 'Back', schools_path}
