@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
@@ -9,6 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    params[:user][:first_name] = params[:user][:first_name].camelize
+    params[:user][:last_name] = params[:user][:last_name].camelize
     super
   end
 
@@ -40,12 +44,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def valid_email
     #only checks calpoly
-    params[:email].match(/@calpoly\.edu$/).nil?
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :grade_level, :first_name, :last_name) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :first_name, :last_name) }
   end
 
   # You can put the params you want to permit in the empty array.

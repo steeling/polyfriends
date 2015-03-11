@@ -5,6 +5,7 @@ Polyfriends::Application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  config.serve_static_assets = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -30,4 +31,9 @@ Polyfriends::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+
+  Devise.setup do |devise_config|
+    devise_config.allow_unconfirmed_access_for = 100.years
+  end
+
 end

@@ -1,0 +1,33 @@
+.row
+  = form_for(@user, multipart: true) do |f|
+    .col-xs-6.col-sm-4.col-md-2.col-xs-offset-1
+      =image_tag @user.get_img, width: "200px", height: "200px"
+      .form-group
+        =f.file_field :avatar
+
+    .col-xs-12.col-sm-6.col-md-6.col-sm-offset-1.col-md-offset-1
+      %h1 Edit Profile
+
+      
+      - if @user.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@user.errors.count, "error")
+            prohibited this user from being saved:
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      .row
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group              
+            = f.text_field :first_name, class: "form-control input-lg"
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group
+            = f.text_field :last_name, class: "form-control input-lg"
+      .row
+        .col-xs-12.col-sm-12.col-md-12
+          .form-group
+            = f.text_field :email, class: "form-control input-lg"
+      .actions
+        = f.submit class: "btn btn-primary btn-block btn-lg"
+      = link_to 'Cancel', @user

@@ -1,0 +1,52 @@
+:javascript
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+        clearBtn: true
+      }).on("show", function(e){
+      $('.datepicker-dropdown').css("z-index", "1050")
+    }).on("changeDate", function(e){
+        $('.datepicker').datepicker('hide');
+      });
+  });
+  
+
+.row
+  .col-xs-12.col-sm-8.col-md-6.col-sm-offset-2.col-md-offset-3
+    = form_for(@coach, multipart: true) do |f|
+      - if @coach.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@coach.errors.count, "error")
+            prohibited this coach from being saved:
+          %ul
+            - @coach.errors.full_messages.each do |msg|
+              %li= msg
+      .row
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group
+            = f.text_field :first_name, class: "form-control input-lg", placeholder: "First Name", autofocus: true
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group  
+            = f.text_field :last_name, class: "form-control input-lg", placeholder: "Last Name"
+      .row
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group
+            = f.text_field :title, class: "form-control input-lg", placeholder: "Title"
+        .col-xs-6.col-sm-6.col-md-6
+          .form-group
+            = f.select :gender, [["Male", "M"], ["Female", "F"]], {prompt: "Select gender"}, {class: "form-control input-lg"}
+      .row
+        .col-xs-12.col-sm-12.col-md-12
+          .form-group
+            =f.select :school_id, School.all.map{ |s| [s.name, s.id] }, { prompt: "Select a school"}, {class: "form-control input-lg"}
+      .row
+        .col-xs-12.col-sm-12.col-md-12
+          .form-group
+            =f.select :sport_id, Sport.all.map{ |s| [s.name, s.id] }, { prompt: "Select a sport"}, {class: "form-control input-lg"}
+
+      .actions
+        = f.submit "Create Coach", class: "btn btn-primary btn-block btn-lg"
+        / .row
+        /         .col-xs-6.col-sm-6.col-md-6
+        /           .form-group
+        /             = f.text_field :started, class: "datepicker form-control input-lg", placeholder: "Start Date"

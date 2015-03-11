@@ -1,19 +1,39 @@
-Polyfriends::Application.routes.draw do
-  Rails.application.routes.draw do
-    devise_for :users, 
-    controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+Rails.application.routes.draw do
+
+  resources :sports, only: [:index, :show] do
+    member do
+      post :set_selected
+    end
+    collection do
+      post :clear_selected
+    end
   end
+
+  resources :schools, only: [:index, :show]
+
+  resources :coaches do
+    resources :reviews, except: [:index]
+
+    collection do
+      get :recents
+      get :search
+    end
+  end
+
+  devise_for :users, 
+    controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   devise_scope :user do
-    get "sign_in", to: "devise/sessions#new"
-    get "sign_up", to: "devise/registrations#new"
+    get "sign_in", to: "users/sessions#new"
+    get "sign_out", to: "users/sessions#destroy"
+    get "sign_up", to: "users/registrations#new"
   end
 
-  root 'users#new'
+  root 'coaches#index'
 
 
-  resources :users
-
+  resources :users, except: [:index]
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -68,4 +88,3 @@ Polyfriends::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

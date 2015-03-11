@@ -10,4 +10,67 @@
  *
  *= require_self
  *= require_tree .
+ *= require font-awesome
+ *= require chosen
+ *= require bootstrap-datepicker3
  */
+
+.selected-sport {
+    color: #B0171F;
+}
+
+ a.dropdown-toggle {
+    color: #111 !important;
+ }
+ ul.nav li.dropdown:hover > a.dropdown-toggle{
+    opacity: 1.0;
+ }
+
+ ul.nav li.dropdown:hover > ul.dropdown-menu {
+     display: block;    
+ }
+ @media ( min-width: 768px ) { 
+     .navbar > .container {
+         text-align: center;
+     }
+     .navbar-header,.navbar-brand,.navbar .navbar-nav,.navbar .navbar-nav > li {
+         float: none;
+         display: inline-block;
+     }
+     .collapse.navbar-collapse {
+         width: auto;
+         clear: none;
+     }
+ }
+
+ .coach-search {
+  width: 200px;
+ }
+ 
+ .alert-error {
+     background-color: #f2dede;
+     border-color: #eed3d7;
+     color: #b94a48;
+     text-align: left;
+  }
+
+ .alert-alert {
+     background-color: #f2dede;
+     border-color: #eed3d7;
+     color: #b94a48;
+     text-align: left;
+  }
+
+ .alert-success {
+     background-color: #dff0d8;
+     border-color: #d6e9c6;
+     color: #468847;
+     text-align: left;
+  }
+
+ .alert-notice {
+     background-color: #dff0d8;
+     border-color: #d6e9c6;
+     color: #468847;
+     text-align: left;
+  }

@@ -11,6 +11,43 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+
+//= require chosen-jquery
 //= require_tree .
+//= require turbolinks
+
+
+  $(document).ready(function(){
+    $('.stars-big').raty({
+      readOnly: true,
+      hints   : [null, null, null, null, null],
+      starOn  : 'star-on-big.png',
+      starOff : 'star-off-big.png',
+      starHalf: 'star-half-big.png',
+      path: '/assets',
+      score   : function() {
+        return $(this).attr('data-score');
+      }
+    });
+
+    $('.stars').raty({
+      readOnly: true,
+      hints   : [null, null, null, null, null],
+      path: '/assets',
+      score   : function() {
+        return $(this).attr('data-score');
+      }
+    });
+
+    $('.star-input').raty({
+      readOnly: false,
+      hints: [null, null, null, null, null],
+      half: true,
+      path: '/assets',
+      score   : function() {
+        return $(this).attr('data-score');
+      }
+    });
+  });

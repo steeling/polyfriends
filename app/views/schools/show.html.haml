@@ -1,0 +1,39 @@
+.row
+  .col-xs-11.col-sm-11.col-md-11.col-sm-offset-1
+    %h1=@school.name
+    .stars-big{:"data-score" => @school.rating(@selected_sport), style:"display:inline;"}
+    ="From #{@school.num_reviews} reviews"
+
+.row
+  .col-xs-5.col-sm-5.col-md-5.col-sm-offset-1
+    %h5=@school.address
+    %h5=@school.city + ", " + @school.state
+    .row
+      %iframe{width: "400", height: "300", frameborder: "0", style: "border:0", src:"https://www.google.com/maps/embed/v1/place?key=AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4&q=#{CGI.escape(@school.name)}+#{CGI.escape(@school.address)}+#{CGI.escape(@school.city)}+#{CGI.escape(@school.state)}".html_safe}
+
+.row
+  .col-xs-12.col-sm-8.col-md-6.col-sm-offset-1
+    %ul.list-group
+      -@coaches.each do |coach|
+        %li.list-group-item
+          %h4
+            =coach.sport.name
+            =coach.title
+          %h5.list-group-item-heading
+            =image_tag coach.get_img, width: "32[x", height: "32px"
+            =link_to coach.full_name, coach_path(coach)
+            .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
+            %small="#{coach.num_ratings} reviews"
+          %br
+          -if coach.reviews.count > 0
+            %span.list-group-item-text
+              -t = coach.reviews.last.text
+              =truncate(t, length: 500)
+              -if t.length > 500
+                =link_to "See more", coach_review_path(coach, coach.reviews.last)
+
+|
+\#{link_to 'Back', schools_path}
+
+
+/googleapikey/AIzaSyBODkfBQ3xyQVidmHalDTsK2lFouEBKaz4

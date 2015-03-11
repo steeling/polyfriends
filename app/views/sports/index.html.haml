@@ -1,0 +1,15 @@
+%h1 Listing sports
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+  %tbody
+    - @sports.each do |sport|
+      %tr
+        %td= sport.name
+       
+%br/
+

@@ -1,0 +1,61 @@
+.row
+  .col-xs-12.col-sm-6.col-md-5.col-sm-offset-1
+    %h3
+      =@coach.full_name
+      .stars-big{:"data-score" => @coach.rating, style:"display:inline; margin-left:10px"}
+      %br
+    %h4
+      =@coach.sport.name
+      =@coach.title
+      at
+      %strong= link_to(@coach.school.name, school_path(@coach.school))
+
+    =image_tag @coach.get_img, width: "200px", height: "200px"
+    %br
+    {Place bio here}
+    /%p#notice=notice
+    / %p
+    /   %strong Started:
+    /   =@coach.started
+
+    / %p
+    /   %strong Gender:
+    /   =@coach.gender
+
+    / %p
+    /   %strong School:
+    /   =link_to @coach.school.name, school_path(@coach.school)
+    %br
+    =link_to 'Edit', edit_coach_path(@coach)
+    |
+    =link_to 'Back', coaches_path
+  .col-xs-12.col-sm-4.col-md-5
+    -if signed_in? and @coach.reviews.map(&:user_id).include?(current_user.id)
+      - r = current_user.reviews.find_by_coach_id(@coach.id)
+      %h5
+        Your Review of 
+        =@coach.full_name
+      .stars-big{:"data-score" => r.rating, style:"display:inline; margin-left:10px"}
+      %span.list-group-item-text
+        %p{style: "display:inline;"}=r.text
+      %br
+      %br
+
+      =link_to 'Edit Your Review', edit_coach_review_path(@coach, @coach.reviews.find_by_user_id(current_user.id)), class: "btn btn-primary"
+    -else
+      =link_to 'Write a Review', new_coach_review_path(@coach), class: "btn btn-primary btn-lg"
+    %br
+    %br
+    %h4 Other reviews
+    -@coach.reviews.order('updated_at DESC').select{|rev| rev.user_id != current_user.id }.each do |review|
+      %li.list-group-item
+        %h4.list-group-item-heading
+          .stars-big{:"data-score" => review.rating, style:"display:inline; margin-left:10px"}
+        %br
+        %span.list-group-item-text
+          -t = review.text
+          =truncate(t, length: 500)
+          -if t.length > 500
+            =link_to "See more", coach_review_path(@coach, review)
+   
+

@@ -5,7 +5,6 @@ gem 'dotenv-rails'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -35,15 +34,24 @@ end
 group :development do
   gem "better_errors"
   gem "byebug"
+  gem "erb2haml"
 end
 #my gems
 gem 'pg'
 gem 'pundit'
-gem 'warden'
 gem 'devise'
 gem 'haml'
 gem 'grape'
 gem 'binding_of_caller'
+gem "font-awesome-rails"
+gem "hashie_rails"
+gem "warden"
+gem "bower-rails"
+gem "carrierwave"
+gem 'chosen-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'will_paginate'
+gem 'jquery-turbolinks'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

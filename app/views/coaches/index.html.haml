@@ -1,0 +1,19 @@
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-xs-offset-1
+
+    %h3 
+      All Coaches
+      %small="|"
+      %small=link_to "Recently Reviewed Coaches", recents_coaches_path
+    %hr
+    %ul.list-group
+      -@coaches.each do |coach|
+        %li.list-unstyled
+          %h4.list-group-item-heading
+            =image_tag coach.get_img, width: "32[x", height: "32px"
+            =link_to coach.full_name, coach_path(coach)
+            .stars-big{:"data-score" => coach.rating, style:"display:inline; margin-left:10px"}
+            %small="#{coach.num_ratings} reviews"
+          = coach.sport.name + " " + coach.title + " at "
+          %strong= link_to(coach.school.name, school_path(coach.school))
+        %hr
