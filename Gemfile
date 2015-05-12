@@ -32,12 +32,13 @@ group :doc do
 end
 
 group :development do
+  gem "better_errors"
   gem "byebug"
   gem "erb2haml"
 end
-gem "better_errors"
 
 #my gems
+gem 'rails_12factor'
 gem 'pg'
 gem 'pundit'
 gem 'devise'
