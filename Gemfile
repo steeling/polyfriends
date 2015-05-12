@@ -32,10 +32,11 @@ group :doc do
 end
 
 group :development do
-  gem "better_errors"
   gem "byebug"
   gem "erb2haml"
 end
+gem "better_errors"
+
 #my gems
 gem 'pg'
 gem 'pundit'
