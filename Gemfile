@@ -38,6 +38,7 @@ group :development do
 end
 
 #my gems
+gem "figaro"
 gem 'rails_12factor'
 gem 'pg'
 gem 'pundit'
