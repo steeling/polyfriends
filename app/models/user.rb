@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     first_name.camelize + " " + last_name.camelize
   end
 
+  def is_admin?
+    self.is_admin
+  end
+
   # def recent_reviews
   #   self.reviews.order('updated_at DESC').limit(10)
 end

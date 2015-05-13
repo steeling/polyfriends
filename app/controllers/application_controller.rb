@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :set_sport
+  before_action :pundit_authorize
+  
+  after_action :verify_authorized, :except => :index
 
    def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
@@ -18,5 +21,8 @@ class ApplicationController < ActionController::Base
     @selected_sport = session[:selected_sport]
   end
 
-   #after_action :verify_authorized
+  def pundit_authorize
+    variable_name = params["controller"].singularize
+    authorize instance_variable_get("@#{variable_name}") || variable_name.capitalize.constantize
+  end
 end

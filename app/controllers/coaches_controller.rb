@@ -1,6 +1,6 @@
 class CoachesController < ApplicationController
   before_action :set_coach, only: [:show, :edit, :update, :destroy, :create_review]
-
+  # before_action :pundit_auth
   respond_to :html
 
   def index
@@ -66,5 +66,9 @@ class CoachesController < ApplicationController
 
     def coach_params
       params.require(:coach).permit(:first_name, :last_name, :img_ref, :started, :gender, :school_id, :title, :sport_id)
+    end
+
+    def pundit_auth
+      authorize @coach || Coach
     end
 end

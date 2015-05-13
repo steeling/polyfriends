@@ -6,7 +6,8 @@ require 'csv'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Sport.create([{name: 'Football'} , {name: 'Soccer'} , {name: 'Hockey'} , {name: 'Volleyball'}])
+Sport.create(
+  [{name: 'Football', gender: "m"} , {name: 'Soccer'} , {name: 'Hockey'} , {name: 'Volleyball'}])
 x = 1
 CSV.foreach("vendor/data/postscndryunivsrvy2013dirinfo.csv", encoding: 'iso-8859-1:utf-8', headers: true) do |row|
   School.create({name: row["INSTNM"], city: row["CITY"], state: row["STABBR"], address: row["ADDR"], zip: row["ZIP"]})

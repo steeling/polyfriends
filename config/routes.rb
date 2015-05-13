@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :sports, only: [:index, :show] do
+  resources :sports do
     member do
       post :set_selected
     end
