@@ -11,7 +11,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    review.user == @user
   end
 
   def create?
@@ -19,10 +19,10 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    review.user == @user
   end
 
   def destroy?
-    true
+    review.user == @user || admin?
   end
 end

@@ -19,20 +19,23 @@ class CoachPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    admin?
   end
 
   def edit?
-    true
+    admin?
   end
 
   def create?
+    admin?
   end
 
   def update?
+    admin?
   end
 
   def destroy?
+    admin?
   end
 
   def search?
@@ -40,5 +43,6 @@ class CoachPolicy < ApplicationPolicy
   end
 
   def create_review?
+    true #how to limit this???
   end
 end

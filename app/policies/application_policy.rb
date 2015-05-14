@@ -50,5 +50,10 @@ class ApplicationPolicy
       scope
     end
   end
+
+  private
+  def admin?
+    @user && @user.admin?
+  end
 end
 

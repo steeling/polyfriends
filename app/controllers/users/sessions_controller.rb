@@ -20,6 +20,6 @@ before_filter :configure_sign_in_params, only: [:create]
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_in_params
-    devise_parameter_sanitizer.for(:login) { |u| u.permit(:email, :password, :password_confirmation, :grade_level, :first_name, :last_name) }
+    devise_parameter_sanitizer.for(:login) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :first_name, :last_name) }
   end
 end

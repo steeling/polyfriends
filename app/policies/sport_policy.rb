@@ -6,10 +6,13 @@ class SportPolicy < ApplicationPolicy
     @sport = sport
   end
 
-  def new?
-    user.admin?
+  def index?
+    true
   end
 
+  def new?
+    admin?
+  end
 
   def show?
     true

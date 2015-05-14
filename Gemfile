@@ -55,6 +55,10 @@ gem 'chosen-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'jquery-turbolinks'
+
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
