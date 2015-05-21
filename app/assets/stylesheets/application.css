@@ -13,6 +13,7 @@
  *= require font-awesome
  *= require chosen
  *= require bootstrap-datepicker3
+ *= require jquery-ui
  */
 
 .selected-sport {

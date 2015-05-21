@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :search, except: [:index, :show, :new, :update, :create, :destroy, :edit] do
+    # get :autocomplete_coach_first_name, :on => :collection
+    get :search, on: :collection
+  end
+
   resources :schools, only: [:index, :show]
 
   resources :coaches do

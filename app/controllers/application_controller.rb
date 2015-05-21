@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :set_sport
-  before_action :pundit_authorize, unless: :devise_controller?
+  # before_action :pundit_authorize, unless: :devise_controller?
   
-  after_action :verify_authorized, unless: :devise_controller?
+  # after_action :verify_authorized, unless: :devise_controller?
 
    def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
