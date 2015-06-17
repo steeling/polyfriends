@@ -11,7 +11,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.scoped_views = true
-  config.mailer_sender = 'no-reply@cslvm95.csc.calpoly.edu'
+  config.mailer_sender = 'no-reply@steeling-coacher.herokuapp.com'
 
 
   # Configure the class responsible to send e-mails.
