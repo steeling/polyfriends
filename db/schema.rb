@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513002611) do
+ActiveRecord::Schema.define(version: 20150618182021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150513002611) do
     t.datetime "last_review"
     t.string   "avatar"
     t.string   "title"
+    t.string   "bio"
   end
 
   add_index "coaches", ["first_name"], name: "index_coaches_on_first_name", using: :btree

@@ -44,6 +44,11 @@
           .form-group
             =f.select :sport_id, Sport.all.map{ |s| [s.name, s.id] }, { prompt: "Select a sport"}, {class: "form-control input-lg"}
 
+      .row
+        .col-xs-12.col-sm-12.col-md-12
+          .form-group
+            = f.text_area :bio, class: "form-control input-lg", placeholder: "Write something about the coach here!"
+
       .actions
         = f.submit "Create Coach", class: "btn btn-primary btn-block btn-lg"
         / .row

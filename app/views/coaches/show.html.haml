@@ -12,7 +12,9 @@
 
     =image_tag @coach.get_img, width: "200px", height: "200px"
     %br
-    {Place bio here}
+      .bio
+        =@coach.bio
+
     /%p#notice=notice
     / %p
     /   %strong Started:

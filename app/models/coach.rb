@@ -15,6 +15,7 @@ class Coach < ActiveRecord::Base
   validates :first_name, presence: true, allow_blank: false
   validates :last_name, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false
+  validates :bio, length: {maximum: 20}
 
 
 	def get_img

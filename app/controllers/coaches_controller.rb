@@ -65,7 +65,7 @@ class CoachesController < ApplicationController
     end
 
     def coach_params
-      params.require(:coach).permit(:first_name, :last_name, :img_ref, :started, :gender, :school_id, :title, :sport_id)
+      params.require(:coach).permit(:first_name, :last_name, :img_ref, :bio, :started, :gender, :school_id, :title, :sport_id)
     end
 
     def pundit_auth
