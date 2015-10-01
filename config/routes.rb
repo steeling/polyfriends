@@ -9,11 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :search, except: [:index, :show, :new, :update, :create, :destroy, :edit] do
-    # get :autocomplete_coach_first_name, :on => :collection
-    get :search, on: :collection
-  end
-
   resources :schools, only: [:index, :show]
 
   resources :coaches do
@@ -36,8 +31,13 @@ Rails.application.routes.draw do
 
   root 'coaches#index'
 
-
   resources :users, except: [:index]
+
+  resource :search, only: [] do
+    # get :autocomplete_coach_first_name, :on => :collection
+    get :autocomplete, to: :search_all
+    get :search_all, on: :collection
+  end
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

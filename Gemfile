@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.4'
 
 # Use sqlite3 as the database for Active Record
 
@@ -38,6 +38,8 @@ group :development do
 end
 
 #my gems
+gem 'rubocop'
+gem "rails-api"
 gem "figaro"
 gem 'rails_12factor'
 gem 'pg'
@@ -47,7 +49,7 @@ gem 'haml'
 gem 'grape'
 gem 'binding_of_caller'
 gem "font-awesome-rails"
-gem "hashie_rails"
+gem "hashie-forbidden_attributes"
 gem "warden"
 gem "bower-rails"
 gem "carrierwave"
@@ -56,6 +58,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'will_paginate'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
+gem 'pg_search'
 
 gem 'rails4-autocomplete'
 # Use ActiveModel has_secure_password

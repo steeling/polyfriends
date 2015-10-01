@@ -1,5 +1,8 @@
 class School < ActiveRecord::Base
-	has_many :coaches
+  include PgSearch
+	multisearchable against: [:name]
+  
+  has_many :coaches
   
   self.per_page = 25
 

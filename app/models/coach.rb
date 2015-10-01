@@ -1,4 +1,9 @@
 class Coach < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:first_name, :last_name], using: { tsearch: { prefix: true }}
+
+  pg_search_scope :name_search, against: [:first_name], using: { tsearch: { prefix: true }}
+
 	belongs_to :sport
 	belongs_to :school
 
